@@ -12,7 +12,7 @@
 using namespace std;
 
 void comandos(){
-// Imprime los comandos disponibles.
+// Imprime todos los comandos disponibles.
         cout << "\n\tCOMANDOS DISPONIBLES\n"<< endl;
 		cout << "\tInsertarLinea()\n";
 		cout << "\tInsertarLineaEnPosicion(Posicion posicionLinea)\n";
@@ -159,7 +159,7 @@ int main(){
 		}else if (strcasecmp (pch, "comandos") == 0){
 			comandos();
 		}else if (strcasecmp (pch, "salir") == 0){
-			cout << "\t- CHAUUUUU!!!\n\n";
+			cout << "\t- Has salido del programa!\n\n";
 			salir = true;
 		}else{
 			cout << " - Comando Incorrecto.\n\n";
