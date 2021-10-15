@@ -6,7 +6,6 @@
 
 #include <string.h>
 #include <iostream>
-
 #include "editor.h"
 #include "texto.h"
 #include "diccionario.h"

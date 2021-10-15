@@ -12,7 +12,7 @@ struct nodo_texto
 texto CrearTexto(){
     texto t = new (nodo_texto);
     t->primeral = CrearLinea();
-    t->ultimal = NULL;
+    t->ultimal = t->primeral;
     return t;
 }
 
