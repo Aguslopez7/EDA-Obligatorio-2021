@@ -4,20 +4,26 @@
 // editor.c
 // Modulo de implementacion de editor.
 
-#include "editor.h"
 #include <string.h>
 #include <iostream>
+
+#include "editor.h"
+#include "texto.h"
+#include "diccionario.h"
 
 using namespace std;
 
 struct nodo_editor{
 	/* aquí deben figurar los campos/estructuras que usted considere necesarios
 	para implementar el editor. Ej: texto, diccionario, etc*/
+	texto t;
+	//diccionario d;
 };
 
 editor CrearEditor(){
 // Crea la estructura editor.
 	editor e = new(nodo_editor);
+	e->t = CrearTexto();
 	// crear el resto de las estructuras que se incluyan en el editor
 	return e;
 }
@@ -26,6 +32,7 @@ TipoRetorno InsertarLinea(editor & e){
 // Inserta una nueva línea vacía al final del texto.
 // Este requerimiento debe ser resuelto en O(1) peor caso.
 // Ver más detalles en la letra del obligatorio.
+	//return InsertarLineaEnTexto(e->t);
 	return NO_IMPLEMENTADA;
 }
 

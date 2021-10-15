@@ -8,30 +8,43 @@
 #include <string.h>
 #include <stdio.h> 
 #include <iostream>
+#include <unistd.h>
+
+// Colors Codes
+#define COLOR_G "\033[32m"
+#define COLOR_Y "\033[33m" 
+#define COLOR_SB "\033[36m"
+#define COLOR_BW "\033[1;37m"
+#define COLOR_R "\033[0;31m"
+#define COLOR_P "\033[0;35m"
+#define COLOR_RESET "\033[0m"
 
 using namespace std;
 
-void comandos(){
 // Imprime todos los comandos disponibles.
-        cout << "\n\tCOMANDOS DISPONIBLES\n"<< endl;
-		cout << "\tInsertarLinea()\n";
-		cout << "\tInsertarLineaEnPosicion(Posicion posicionLinea)\n";
-		cout << "\tBorrarLinea(Posicion posicionLinea)\n";
-		cout << "\tBorrarTodo()\n";
-		cout << "\tBorrarOcurrenciasPalabraEnTexto(Cadena palabraABorrar)\n";
-		cout << "\tImprimirTexto()\n";
-		cout << "\tComprimirTexto()\n";
-		cout << "\tInsertarPalabra(Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar)\n";
-		cout << "\tBorrarPalabra(Posicion posicionLinea, Posicion posicionPalabra)\n";
-		cout << "\tBorrarOcurrenciasPalabraEnLinea(Posicion posicionLinea, Cadena palabraABorrar)\n";
-		cout << "\tImprimirLinea(Posicion posicionLinea)\n";
-		cout << "\tIngresarPalabraDiccionario(Cadena palabraAIngresar)\n";
-		cout << "\tBorrarPalabraDiccionario(Cadena palabraABorrar)\n";
-		cout << "\tImprimirDiccionario()\n";
-		cout << "\tImprimirTextoIncorrecto()\n";
-		cout << "\tImprimirUltimasPalabras()\n";
-		cout << "\tcomandos\n";
-		cout << "\tsalir\n";
+void comandos(){
+		cout << "\n\t╔═════════════════════════════════════════╗\n";
+		cout << COLOR_SB << "\t║           ♦ EDITOR DE TEXTO ♦           ║" << COLOR_RESET << endl;
+		cout << "\t╚═════════════════════════════════════════╝\n";
+        cout << COLOR_G << "\n\tCOMANDOS DISPONIBLES\n" << COLOR_RESET << endl;;
+		cout << "\t> InsertarLinea()\n";
+		cout << "\t> InsertarLineaEnPosicion(Posicion posicionLinea)\n";
+		cout << "\t> BorrarLinea(Posicion posicionLinea)\n";
+		cout << "\t> BorrarTodo()\n";
+		cout << "\t> BorrarOcurrenciasPalabraEnTexto(Cadena palabraABorrar)\n";
+		cout << "\t> ImprimirTexto()\n";
+		cout << "\t> ComprimirTexto()\n";
+		cout << "\t> InsertarPalabra(Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar)\n";
+		cout << "\t> BorrarPalabra(Posicion posicionLinea, Posicion posicionPalabra)\n";
+		cout << "\t> BorrarOcurrenciasPalabraEnLinea(Posicion posicionLinea, Cadena palabraABorrar)\n";
+		cout << "\t> ImprimirLinea(Posicion posicionLinea)\n";
+		cout << "\t> IngresarPalabraDiccionario(Cadena palabraAIngresar)\n";
+		cout << "\t> BorrarPalabraDiccionario(Cadena palabraABorrar)\n";
+		cout << "\t> ImprimirDiccionario()\n";
+		cout << "\t> ImprimirTextoIncorrecto()\n";
+		cout << "\t> ImprimirUltimasPalabras()\n";
+		cout << "\t> comandos\n";
+		cout << "\t> salir\n" << endl;
 }
 
 int main(){
@@ -46,12 +59,12 @@ int main(){
 
 	comandos();
 
-
 	do{
-
 		fflush(stdin);
 		ejecutado = false;
-		cout << "> ";
+		cout << "\tIngrese un comando\n";
+		cout << "\t──────────────────\n\n";
+		cout << COLOR_BW "\t> " << COLOR_RESET;
 
 		fgets (comando, MAX_COMANDO, stdin); // leo la linea entera del comando. 
 		pch = strtok (comando,"( ,)\n");
@@ -159,19 +172,19 @@ int main(){
 		}else if (strcasecmp (pch, "comandos") == 0){
 			comandos();
 		}else if (strcasecmp (pch, "salir") == 0){
-			cout << "\t- Has salido del programa!\n\n";
-			salir = true;
+			cout << COLOR_P <<"\n\t- Has salido del programa!\n\n" << COLOR_RESET;
+			salir = true;			
 		}else{
-			cout << " - Comando Incorrecto.\n\n";
+			cout << COLOR_R <<  "\n>Comando Incorrecto.\n\n" << COLOR_RESET;
 			retorno = ERROR;
 		}
 		if (ejecutado){
 				if (retorno == OK)
-					cout << " - OK\n\n";
+					cout << COLOR_G << "\n\t> OK\n\n" << COLOR_RESET;
 				else if (retorno == ERROR)
-					cout << " - ERROR\n\n";
+					cout << COLOR_R << "\n\t> ERROR\n\n" << COLOR_RESET;
 				else
-					cout << " - NO IMPLEMENTADA\n\n";
+					cout << COLOR_Y << "\n\t> NO IMPLEMENTADA\n\n" << COLOR_RESET;
 		}
 
 	}while (!salir);
@@ -185,4 +198,6 @@ int main(){
 		cout << " - Operacion DestruirEditor NO IMPLEMENTADA\n\n";
 
 	delete [] comando;
+	sleep(1.5);
+	system("clear");
 }
