@@ -32,8 +32,7 @@ TipoRetorno InsertarLinea(editor & e){
 // Inserta una nueva línea vacía al final del texto.
 // Este requerimiento debe ser resuelto en O(1) peor caso.
 // Ver más detalles en la letra del obligatorio.
-	//return InsertarLineaEnTexto(e->t);
-	return NO_IMPLEMENTADA;
+	return InsertarLineaEnTexto(e->t);
 }
 
 TipoRetorno InsertarLineaEnPosicion(editor & e, Posicion posicionLinea){

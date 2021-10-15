@@ -8,5 +8,7 @@ typedef struct nodo_linea * linea;
 
 linea CrearLinea();
 
+//insertar linea al final
+TipoRetorno InsertarLineaEnTextoUlt(linea &l);
 
 #endif

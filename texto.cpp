@@ -17,7 +17,7 @@ texto CrearTexto(){
 }
 
 //Inserta la linea al final del texto
-TipoRetorno insertarLineaEnTexto(texto & t){
+TipoRetorno InsertarLineaEnTexto(texto &t){
     //Snoc
-    return NO_IMPLEMENTADA;
+    return InsertarLineaEnTextoUlt(t->ultimal);
 }
