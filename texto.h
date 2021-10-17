@@ -12,6 +12,8 @@ texto CrearTexto();
 //Inserta la linea al final del texto
 TipoRetorno InsertarLineaEnTexto(texto & t);
 
+TipoRetorno ImprimirLineaT(texto &t, Posicion posicionLinea);
 
+TipoRetorno InsertarLineaEnPosicionT(texto &t, Posicion posicionLinea);
 
 #endif

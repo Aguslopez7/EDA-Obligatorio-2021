@@ -21,3 +21,12 @@ TipoRetorno InsertarLineaEnTexto(texto &t){
     //Snoc
     return InsertarLineaEnTextoUlt(t->ultimal);
 }
+
+TipoRetorno ImprimirLineaT(texto &t, Posicion posicionLinea){
+
+    return ImprimirLinea(t->primeral,(posicionLinea));
+}
+TipoRetorno InsertarLineaEnPosicionT(texto &t, Posicion posicionLinea){
+
+    return InsertarLineaEnPosicion(t->primeral,(posicionLinea));
+}

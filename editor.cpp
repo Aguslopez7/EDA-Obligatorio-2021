@@ -37,7 +37,7 @@ TipoRetorno InsertarLinea(editor & e){
 TipoRetorno InsertarLineaEnPosicion(editor & e, Posicion posicionLinea){
 // Inserta una nueva línea vacía en la posición indicada.
 // Ver más detalles en la letra del obligatorio.
-	return NO_IMPLEMENTADA;
+	return InsertarLineaEnPosicionT(e->t,(posicionLinea));
 }
 
 TipoRetorno BorrarLinea(editor & e, Posicion posicionLinea){
@@ -91,7 +91,7 @@ TipoRetorno BorrarOcurrenciasPalabraEnLinea(editor & e, Posicion posicionLinea, 
 TipoRetorno ImprimirLinea(editor & e, Posicion posicionLinea){
 // Imprime la línea por pantalla.
 // Ver más detalles en la letra del obligatorio.
-	return NO_IMPLEMENTADA;
+	return ImprimirLineaT(e->t,(posicionLinea));
 }
 
 TipoRetorno IngresarPalabraDiccionario(editor & e, Cadena palabraAIngresar){
