@@ -15,5 +15,5 @@ TipoRetorno InsertarLineaEnTexto(texto & t);
 TipoRetorno ImprimirLineaT(texto &t, Posicion posicionLinea);
 
 TipoRetorno InsertarLineaEnPosicionT(texto &t, Posicion posicionLinea);
-
+//hola
 #endif

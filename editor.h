@@ -61,6 +61,7 @@ TipoRetorno BorrarOcurrenciasPalabraEnLinea(editor & e, Posicion posicionLinea, 
 TipoRetorno ImprimirLinea(editor & e, Posicion posicionLinea);
 // Imprime la línea por pantalla.
 // Ver más detalles en la letra del obligatorio.
+//hola
 
 TipoRetorno IngresarPalabraDiccionario(editor & e, Cadena palabraAIngresar);
 // Agrega una palabra al diccionario.

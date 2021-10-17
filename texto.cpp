@@ -30,3 +30,4 @@ TipoRetorno InsertarLineaEnPosicionT(texto &t, Posicion posicionLinea){
 
     return InsertarLineaEnPosicion(t->primeral,(posicionLinea));
 }
+//hola

@@ -119,6 +119,7 @@ TipoRetorno ImprimirTextoIncorrecto(editor & e){
 // Ver más detalles en la letra del obligatorio.
 	return NO_IMPLEMENTADA;
 }
+//hola
 
 TipoRetorno ImprimirUltimasPalabras(editor & e){
 // Imprime las últimas MAX_CANT_ULTIMAS_PALABRAS palabras ingresadas al texto.
