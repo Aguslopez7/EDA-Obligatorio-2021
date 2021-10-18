@@ -11,7 +11,6 @@
 
 typedef struct nodo_editor * editor;
 
-
 // Operaciones Relativas a las lineas (al documento)
 
 editor CrearEditor();

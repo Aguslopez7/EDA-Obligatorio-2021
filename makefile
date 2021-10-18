@@ -1,5 +1,5 @@
-todo: main.o editor.o texto.o linea.o palabra.o diccionario.o 
-	g++ -Wall -o obligatorio main.o editor.o texto.o linea.o palabra.o diccionario.o 
+todo: main.o editor.o texto.o linea.o diccionario.o 
+	g++ -Wall -o obligatorio main.o editor.o texto.o linea.o diccionario.o 
 
 main.o: main.cpp
 	g++ -Wall -c main.cpp
@@ -12,9 +12,6 @@ texto.o: texto.h texto.cpp
 
 linea.o: linea.h linea.cpp
 	g++ -Wall -c linea.cpp
-
-palabra.o: palabra.h palabra.cpp
-	g++ -Wall -c palabra.cpp
 
 diccionario.o: diccionario.h diccionario.cpp
 	g++ -Wall -c diccionario.cpp

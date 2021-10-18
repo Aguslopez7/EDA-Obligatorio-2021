@@ -13,12 +13,13 @@ texto CrearTexto(){
     texto t = new (nodo_texto);
     t->primeral = CrearLinea();
     t->ultimal = t->primeral;
+    //t->primeral = NULL;
+    //t->ultimal = NULL;
     return t;
 }
 
 //Inserta la linea al final del texto
 TipoRetorno InsertarLineaEnTexto(texto &t){
-    //Snoc
     return InsertarLineaEnTextoUlt(t->ultimal);
 }
 
