@@ -62,9 +62,10 @@ int main(){
 	do{
 		fflush(stdin);
 		ejecutado = false;
-		cout << "\tIngrese un comando\n";
-		cout << "\t──────────────────\n\n";
-		cout << COLOR_BW "\t> " << COLOR_RESET;
+		cout << "\t──────────────────\n";
+        cout << COLOR_BW << "\tIngrese un comando\n" << COLOR_RESET;
+        cout << "\t──────────────────\n\n";
+        cout << COLOR_BW "\t> " << COLOR_RESET;
 
 		fgets (comando, MAX_COMANDO, stdin); // leo la linea entera del comando. 
 		pch = strtok (comando,"( ,)\n");

@@ -16,6 +16,7 @@ typedef struct nodo_editor * editor;
 editor CrearEditor();
 // Crea la estructura editor.
 
+
 TipoRetorno InsertarLinea(editor & e);
 // Inserta una nueva línea vacía al final del texto.
 // Este requerimiento debe ser resuelto en O(1) peor caso.
