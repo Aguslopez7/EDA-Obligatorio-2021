@@ -17,8 +17,10 @@ struct nodo_editor{
     //diccionario d;
 };
 
-editor CrearEditor(){
+/*--------------------- Funciones --------------------*/
+
 // Crea la estructura editor.
+editor CrearEditor(){
     cout << "\n\tESTRUCTURA DEL EDITOR\n";
     cout << "\t─────────────────────\n";
     editor e = new(nodo_editor);
@@ -29,109 +31,95 @@ editor CrearEditor(){
     return e;
 }
 
-//1)
-TipoRetorno InsertarLinea(editor & e){
-// Inserta una nueva línea vacía al final del texto.
+// 1) Inserta una nueva línea vacía al final del texto.
 // Este requerimiento debe ser resuelto en O(1) peor caso.
-// Ver más detalles en la letra del obligatorio.
+TipoRetorno InsertarLinea(editor & e){
 	return InsertarLineaEnTexto(e->t);
 }
-//2)
+
+// 2) Inserta una nueva línea vacía en la posición indicada.
 TipoRetorno InsertarLineaEnPosicion(editor & e, Posicion posicionLinea){
-// Inserta una nueva línea vacía en la posición indicada.
-// Ver más detalles en la letra del obligatorio.
 	return InsertarLineaEnPosicionEnT(e->t,(posicionLinea));
 }
-//3)
+
+// 3) Borra la línea en la posición indicada.
 TipoRetorno BorrarLinea(editor & e, Posicion posicionLinea){
-// Borra la línea en la posición indicada.
-// Ver más detalles en la letra del obligatorio.
 	return BorrarPosLineaIndicadaEnT(e->t,(posicionLinea));
 }
-//4)
-TipoRetorno BorrarTodo(editor & e){
-// Borra todas las líneas del texto.
-// Ver más detalles en la letra del obligatorio.
+
+// 4) Borra todas las líneas del texto.
+TipoRetorno BorrarTodo(editor & e){ 
 	return BorrarTodoT(e->t);
 }
-//5)
+
+// 5) Borra todas las ocurrencias de una palabra en el texto.
 TipoRetorno BorrarOcurrenciasPalabraEnTexto(editor & e, Cadena palabraABorrar){
-// Borra todas las ocurrencias de una palabra en el texto.
-// Ver más detalles en la letra del obligatorio.
 	return BorrarOcurrenciasPalabraEnTextoEnT(e->t,palabraABorrar);
 }
-//6)
+
+// 6) Imprime el texto por pantalla.
 TipoRetorno ImprimirTexto(editor & e){
-// Imprime el texto por pantalla.
-// Ver más detalles en la letra del obligatorio.
 	return ImprimirTextoEnT(e->t);
 }
-//7)
+
+// 7) Comprime las palabras del texto. 
+// Para implementar esta operación no debe generarse un nuevo documento.
 TipoRetorno ComprimirTexto(editor & e){
-// Comprime las palabras del texto. Para implementar esta operación no debe generarse un nuevo documento.
-// Ver más detalles en la letra del obligatorio.
 	return NO_IMPLEMENTADA;
 }
-//8)
-TipoRetorno InsertarPalabra(editor & e, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar){
-// Inserta una palabra en una línea.
-// Ver más detalles en la letra del obligatorio.
-	return NO_IMPLEMENTADA;//InsertarPalabraEnT(e->t,(posicionLinea), (posicionPalabra), (palabraAIngresar));
+
+// 8) Inserta una palabra en una línea.
+TipoRetorno InsertarPalabra(editor & e, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar){ 
+	//return NO_IMPLEMENTADA;
+	return InsertarPalabraEnT(e->t,(posicionLinea), (posicionPalabra), (palabraAIngresar));
 }
-//9)
+
+// 9) Borra la palabra en la posición indicada.
 TipoRetorno BorrarPalabra(editor & e, Posicion posicionLinea, Posicion posicionPalabra){
-// Borra la palabra en la posición indicada.
-// Ver más detalles en la letra del obligatorio.
 	return  BorrarPalabraEnT(e->t,(posicionLinea), (posicionPalabra));
 }
-//10)
+
+// 10) Borra todas las ocurrencias de una palabra en la línea indicada.
 TipoRetorno BorrarOcurrenciasPalabraEnLinea(editor & e, Posicion posicionLinea, Cadena palabraABorrar){
-// Borra todas las ocurrencias de una palabra en la línea indicada.
-// Ver más detalles en la letra del obligatorio.
 	return BorrarOcurrenciasPalabraEnLineaEnT(e->t,(posicionLinea), (palabraABorrar));
 }
-//11)
-TipoRetorno ImprimirLinea(editor & e, Posicion posicionLinea){
-// Imprime la línea por pantalla.
-// Ver más detalles en la letra del obligatorio.
+
+// 11) Imprime la línea por pantalla.
+TipoRetorno ImprimirLinea(editor & e, Posicion posicionLinea){ 
 	return ImprimirLineaEnT(e->t,(posicionLinea));
 }
 
-TipoRetorno IngresarPalabraDiccionario(editor & e, Cadena palabraAIngresar){
-// Agrega una palabra al diccionario.
+// 12) Agrega una palabra al diccionario.
 // Esta operación debe realizarse en a lo sumo O(log n) promedio.
-// Ver más detalles en la letra del obligatorio.
+TipoRetorno IngresarPalabraDiccionario(editor & e, Cadena palabraAIngresar){
 	return NO_IMPLEMENTADA;
 }
 
+// 13) Borra una palabra del diccionario.
 TipoRetorno BorrarPalabraDiccionario(editor & e, Cadena palabraABorrar){
-// Borra una palabra del diccionario.
-// Ver más detalles en la letra del obligatorio.
 	return NO_IMPLEMENTADA;
 }
 
-TipoRetorno ImprimirDiccionario(editor & e){
-// Muestra las palabras del diccionario alfabéticamente.
+// 14) Muestra las palabras del diccionario alfabéticamente.
 // Esta operación debe realizarse en O(n) peor caso.
-// Ver más detalles en la letra del obligatorio.
+TipoRetorno ImprimirDiccionario(editor & e){
 	return NO_IMPLEMENTADA;
 }
 
+// 15) Muestra las palabras del texto que no se encuentran en el diccionario.
 TipoRetorno ImprimirTextoIncorrecto(editor & e){
-// Muestra las palabras del texto que no se encuentran en el diccionario.
-// Ver más detalles en la letra del obligatorio.
 	return NO_IMPLEMENTADA;
 }
-//hola
 
+// 16) Imprime las últimas MAX_CANT_ULTIMAS_PALABRAS palabras ingresadas al texto.
 TipoRetorno ImprimirUltimasPalabras(editor & e){
-// Imprime las últimas MAX_CANT_ULTIMAS_PALABRAS palabras ingresadas al texto.
-// Ver más detalles en la letra del obligatorio.
+
 	return NO_IMPLEMENTADA;
 }
 
-TipoRetorno DestruirEditor(editor & e){
 // Destruye la estructura editor y libera la memoria asociada.
+TipoRetorno DestruirEditor(editor & e){
+	//return DestruirT(e->t);
 	return NO_IMPLEMENTADA;
 }
 

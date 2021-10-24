@@ -79,14 +79,14 @@ int main(){
 				retorno = InsertarLineaEnPosicion(e, atoi(pch));;
 				ejecutado = true;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "BorrarLinea") == 0){
 			pch = strtok (NULL, "( ,)\n");
 			if (pch != NULL){
 				retorno = BorrarLinea(e, atoi(pch));
 				ejecutado = true;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "BorrarTodo") == 0){
 			retorno = BorrarTodo(e);
 			ejecutado = true;
@@ -96,7 +96,7 @@ int main(){
 				retorno = BorrarOcurrenciasPalabraEnTexto(e, pch);
 				ejecutado = true;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "ImprimirTexto") == 0){
 			retorno = ImprimirTexto(e);
 			ejecutado = true;
@@ -113,11 +113,11 @@ int main(){
 						retorno = InsertarPalabra(e, atoi(pch), atoi(pch1), pch2);
 						ejecutado = true;
 					}else
-						cout << " - ERROR: Faltan Parametros.\n";
+						cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 				}else
-					cout << " - ERROR: Faltan Parametros.\n";
+					cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "BorrarPalabra") == 0){
 			pch = strtok (NULL, "( ,)\n");
 			if (pch != NULL){
@@ -126,9 +126,9 @@ int main(){
 					retorno = BorrarPalabra(e, atoi(pch), atoi(pch1));
 					ejecutado = true;
 				}else
-					cout << " - ERROR: Faltan Parametros.\n";
+					cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "BorrarOcurrenciasPalabraEnLinea") == 0){
 			pch = strtok (NULL, "( ,)\n");
 			if (pch != NULL){
@@ -137,30 +137,30 @@ int main(){
 					retorno = BorrarOcurrenciasPalabraEnLinea(e, atoi(pch), pch1);
 					ejecutado = true;
 				}else
-					cout << " - ERROR: Faltan Parametros.\n";
+					cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "ImprimirLinea") == 0){
 			pch = strtok (NULL, "( ,)\n");
 			if (pch != NULL){
 				retorno = ImprimirLinea(e, atoi(pch));
 				ejecutado = true;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "IngresarPalabraDiccionario") == 0){
 			pch = strtok (NULL, "( ,)\n");
 			if (pch != NULL){
 				retorno = IngresarPalabraDiccionario(e, pch);
 				ejecutado = true;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "BorrarPalabraDiccionario") == 0){
 			pch = strtok (NULL, "( ,)\n");
 			if (pch != NULL){
 				retorno = BorrarPalabraDiccionario(e, pch);
 				ejecutado = true;
 			}else
-				cout << " - ERROR: Faltan Parametros.\n";
+				cout << COLOR_R <<  " \n\t> ERROR: Faltan Parametros.\n" <<  COLOR_RESET << endl;
 		}else if (strcasecmp (pch, "ImprimirDiccionario") == 0){
 			retorno = ImprimirDiccionario(e);
 			ejecutado = true;
@@ -173,10 +173,10 @@ int main(){
 		}else if (strcasecmp (pch, "comandos") == 0){
 			comandos();
 		}else if (strcasecmp (pch, "salir") == 0){
-			cout << COLOR_P <<"\n\t- Has salido del programa!\n\n" << COLOR_RESET;
+			cout << COLOR_P <<"\n\t> Has salido del programa!\n\n" << COLOR_RESET;
 			salir = true;			
 		}else{
-			cout << COLOR_R <<  "\n>Comando Incorrecto.\n\n" << COLOR_RESET;
+			cout << COLOR_R <<  "\n> Comando Incorrecto.\n\n" << COLOR_RESET;
 			retorno = ERROR;
 		}
 		if (ejecutado){
@@ -192,13 +192,13 @@ int main(){
 	
 	retorno = DestruirEditor(e);
 	if (retorno == OK)
-		cout << " - Memoria liberada con exito.\n\n";
+		cout << COLOR_G << " - Memoria liberada con exito.\n\n" << COLOR_RESET;
 	else if (retorno == ERROR)
-		cout << " - Error al liberar memoria.\n\n";
+		cout << COLOR_R << " - Error al liberar memoria.\n\n" << COLOR_RESET;
 	else
-		cout << " - Operacion DestruirEditor NO IMPLEMENTADA\n\n";
+		cout << COLOR_Y << " - Operacion DestruirEditor NO IMPLEMENTADA\n\n" << COLOR_RESET;
 
 	delete [] comando;
-	sleep(1.5);
-	system("clear");
+	//sleep(1.5);
+	//system("clear");
 }
