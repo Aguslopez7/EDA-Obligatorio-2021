@@ -30,6 +30,7 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL (linea &l, Cadena palabraABorrar)
 TipoRetorno ImprimirTextoEnL(linea & l);
 
 //7) Comprime las palabras del texto.
+TipoRetorno ComprimirTextoEnL(linea &l);
 
 //(8Inserta una palabra en una línea.
 TipoRetorno InsertarPalabraEnL(linea & l, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar);

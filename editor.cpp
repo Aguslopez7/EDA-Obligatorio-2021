@@ -65,7 +65,7 @@ TipoRetorno ImprimirTexto(editor & e){
 // 7) Comprime las palabras del texto. 
 // Para implementar esta operación no debe generarse un nuevo documento.
 TipoRetorno ComprimirTexto(editor & e){
-	return NO_IMPLEMENTADA;
+	return ComprimirTextoEnT(e->t);
 }
 
 // 8) Inserta una palabra en una línea.

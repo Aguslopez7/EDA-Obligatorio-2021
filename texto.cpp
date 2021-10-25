@@ -55,6 +55,9 @@ TipoRetorno ImprimirTextoEnT(texto &t){
 }
 
 //7)
+TipoRetorno ComprimirTextoEnT(texto &t){
+    return ComprimirTextoEnL(t->primeral);
+}
 
 //8)
 TipoRetorno InsertarPalabraEnT(texto &t,Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar){

@@ -28,6 +28,7 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnT (texto &t, Cadena palabraABorrar)
 TipoRetorno ImprimirTextoEnT(texto &t);
 
 //7) Comprime las palabras del texto.
+TipoRetorno ComprimirTextoEnT(texto &t);
 
 //(8Inserta una palabra en una línea.
 TipoRetorno InsertarPalabraEnT(texto &t, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar);
