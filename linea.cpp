@@ -619,7 +619,7 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
                     {
                         aux = aux->sig;
                         delete[] aux->ant;
-                        aux->ant == NULL;
+                        aux->ant = NULL;
                         l = aux;
                         cantl--;
                         while (aux->sig != NULL)
@@ -846,44 +846,43 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
 TipoRetorno BorrarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posicionPalabra)
 {
     linea aux = l;
-    int i = 0;
     int restapl = 1;
-    posicionPalabra--;
     if ((posicionLinea >= 1) && (posicionLinea <= static_cast<unsigned int>(cantl))){ //Si la posicion de la linea existe
-        if ((posicionPalabra >= 0) && (posicionPalabra <= static_cast<unsigned int>(aux->cantpl))){                                   //Si la posicion de la palabra existe
+        if ((posicionPalabra >= 1) && (posicionPalabra <= MAX_CANT_PALABRAS_X_LINEA)){                                   //Si la posicion de la palabra existe
+            posicionPalabra--;
             while (posicionLinea != static_cast<unsigned int>(aux->indice)) //Si mi posicion de la linea no es la que quiero
                 aux = aux->sig;
-            if (aux->pal != NULL){                                      //Tengo palabras
-                while (posicionPalabra != static_cast<unsigned int>(i)) //Si no esoty en la palabra a borrar
-                    i++;
-                /*-------------------- [DEBUG] --------------------*/
-                cout << "\n--------------------------------------" << endl;
-                cout << "\nPALABRA BORRADA: " << aux->pal[i] << endl;
-                cout << "\n--------------------------------------" << endl;
-                delete[] aux->pal[i]; //Borro la palbra que quiero
-                aux->cantpl-=restapl;
-                while ((i + 1 <= (MAX_CANT_PALABRAS_X_LINEA) && (aux->pal[i + 1] != NULL))){ //Si en la sigueinte posicion hay una palabra y no me paso del maximo
-                    aux->pal[i] = aux->pal[i + 1];
-                    i++;
-                }
-                if (i == (MAX_CANT_PALABRAS_X_LINEA)){ //Si llegue a final de linea y pongo NULL
-                    aux->pal[i] = NULL;
-                    return OK;
-                }
-                else
+
+            for (int i = 0; i <= aux->cantpl; i++)
+            {
+                if (static_cast<unsigned int>(i) == posicionPalabra)
                 {
-                    aux->pal[i] = NULL; //si no llegue a final de linea y tengoq  poner NULL
-                    return OK;
+                    delete[] aux->pal[i]; //Borro la palabra
+                    aux->pal[i] = NULL;   //Lo apunto a NULL
+                    aux->cantpl-=restapl;
                 }
             }
-            else
-                return OK;
+            for (int i = aux->cantpl; i > 0; i--)
+            { //Comprimo la linea
+                for (int n = MAX_CANT_PALABRAS_X_LINEA - 1; n > 0; n--)
+                {
+                    if (aux->pal[n] != NULL)
+                    { //Si hay palabra
+                        if (aux->pal[n - 1] == NULL)
+                        {                                  //Y la ant esta vacia
+                            aux->pal[n - 1] = aux->pal[n]; //Cambio
+                            aux->pal[n] = NULL;
+                        }
+                    }
+                }
+            }
+            return OK;
         }
         else
-            return ERROR;
+            return ERROR;   
     }
     else
-        return ERROR;
+        return ERROR;  
 }
 
 //10)Borrar todas la ocurrencias de una palabra si existe en la linea
