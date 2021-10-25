@@ -56,7 +56,7 @@ TipoRetorno ImprimirTextoEnT(texto &t){
 
 //7)
 TipoRetorno ComprimirTextoEnT(texto &t){
-    return ComprimirTextoEnL(t->primeral);
+    return ComprimirTextoEnL(t->primeral,t->ultimal);
 }
 
 //8)

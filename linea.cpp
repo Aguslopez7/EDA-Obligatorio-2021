@@ -79,11 +79,12 @@ TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu)
 TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicionLinea)
 {
     //varios nodos
-    if ((posicionLinea > 1) && (posicionLinea <= static_cast<unsigned int>(cantl)))
+    if ((posicionLinea > 1) && (posicionLinea <= static_cast<unsigned int>(cantl+1)))
     {
         linea aux2 = new (nodo_linea);
         linea aux = l;
         linea aux3 = l;
+        
         /*-------------------- [DEBUG] --------------------*/
         cout << "\nINDICE DE L: " << l->indice << endl;
         cout << "\nINDICE DE AUX: " << aux->indice << endl;
@@ -109,7 +110,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
         return OK;
     }
     //inertar en el primero
-    else if (posicionLinea == 1 && posicionLinea <= static_cast<unsigned int>(cantl))
+    else if (posicionLinea == 1 && posicionLinea <= static_cast<unsigned int>(cantl+1))
     {
         //un solo nodo
         if (cantl == 1)
@@ -143,6 +144,27 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
             cout << "\nSIGUIENTE NODO CREADO" << endl;
             cout << "\n--------------------------------------" << endl;
+        }
+        else if(cantl==0){
+            l=new(nodo_linea);
+            l->sig=NULL;
+            l->ant=NULL;
+            l->pal=NULL;
+            l->indice=posicionLinea;
+            lu=l;
+            cantl++;
+           /*-------------------- [DEBUG] --------------------*/
+        cout << "\n--------------------------------------" << endl;
+        cout << "\nl->pal: " << l->pal << endl;
+        cout << "\nl->ant: " << l->ant << endl;
+        cout << "\nl->sig: " << l->sig << endl;
+        cout << "\nNODO L: " << l << endl;
+        cout << "\nNODO LU: " << lu << endl;
+        cout << "\nINDICE L: " << l->indice << endl;
+        cout << "\nINDICE LU: " << lu->indice << endl;
+        cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
+        cout << "\nPRIMER NODO CREADO" << endl;
+        cout << "\n--------------------------------------" << endl;
         }
         //varios nodos insertando en el primero
         else
@@ -207,6 +229,7 @@ TipoRetorno BorrarPosLineaIndicadaEnLinea(linea &l, Posicion posicionLinea)
                 cantl--;
                 delete aux;
                 return OK;
+                
             }
             else
             {
@@ -288,17 +311,21 @@ TipoRetorno BorrarPosLineaIndicadaEnLinea(linea &l, Posicion posicionLinea)
                 delete[] l->pal;
                 l->pal = NULL;
                 delete l;
+                l=NULL;
                 return OK;
             }
         }
         else if (l->pal == NULL)
         { //hay mas nodos y no tengo palabras en l
+            
             linea aux2 = l;
             aux2 = aux->sig;
             aux2->ant = NULL;
             aux2->indice-=restapl;
             cantl--;
-            delete l;
+            l=aux2;
+            delete aux;
+            aux=l;
             return OK;
         }
         else
@@ -318,7 +345,9 @@ TipoRetorno BorrarPosLineaIndicadaEnLinea(linea &l, Posicion posicionLinea)
             aux2->ant = NULL;
             aux2->indice-=restapl;
             cantl--;
-            delete l;
+            l=aux2;
+            delete aux;
+            aux=l;
             return OK;
         }
     }
@@ -440,11 +469,50 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL(linea &l, Cadena palabraABorrar)
                     }
                 }
                 if(aux->sig != NULL)
-                    aux = aux->sig;                                  
+                    aux = aux->sig; 
+                                                 
             }
+
         }while (aux->sig != NULL);
-        return OK;        
-    }      
+        if(aux->sig==NULL){
+            if (aux->pal != NULL) 
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (aux->pal[i] != NULL)
+                    {
+                        if (strcmp(palabraABorrar, aux->pal[i]) == 0)
+                        {                         //Comparo la palabra a borrar con las que tengo
+                            cout << "\n--------------------------------------" << endl;
+                            cout << "\nPALABRA BORRADA MAS NODOS: " << aux->pal[i] << endl;
+                            cout << "\n--------------------------------------" << endl;
+                            delete[] aux->pal[i]; //Borro la palabra
+                            aux->pal[i] = NULL;     //Lo apunto a NULL
+                            aux->cantpl-=restapl; 
+                            cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
+                        }
+                    }
+                }
+                for (int i = aux->cantpl; i > 0; i--)
+                { //Comprimo la linea
+
+                    for (int n = MAX_CANT_PALABRAS_X_LINEA - 1; n > 0; n--)
+                    {
+                        if (aux->pal[n] != NULL)
+                        { //Si hay palabra
+                            if (aux->pal[n - 1] == NULL)
+                            {                                  //Y la sig esta vacia
+                                aux->pal[n - 1] = aux->pal[n]; //Cambio
+                                aux->pal[n] = NULL;
+                            }
+                        }
+                    }
+                }
+           }
+               
+        }
+    }
+    return OK;       
 }
 
 //6)Imprime el texto por pantalla.
@@ -468,6 +536,9 @@ TipoRetorno ImprimirTextoEnL(linea &l)
                 {
                     if (aux->pal[i] != NULL)
                     {
+                        if(i==aux->cantpl - 1){
+                        cout << aux->pal[i];  
+                        }else
                         cout << aux->pal[i] << ", ";
                     }
                 }
@@ -481,6 +552,143 @@ TipoRetorno ImprimirTextoEnL(linea &l)
 }
 
 //7) Comprime las palabras del texto.
+TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
+{
+
+    linea aux = l, aux2 = l;
+    int resta = 1;
+
+    if (cantl >= 2)
+    {
+        do
+        {
+            cout << "1" << endl;
+            if (aux->pal != NULL)
+            {
+                while (aux->pal[MAX_CANT_PALABRAS_X_LINEA - 1] != NULL) //Si esta llena la linea sigo hasta que haya una con lugar
+                    aux = aux->sig;                                     //Paso a la siguiente
+
+                if (aux->sig->cantpl > 0)
+                { //Si la sig tiene palabras
+                    aux->pal[MAX_CANT_PALABRAS_X_LINEA - 1] = aux->sig->pal[0];
+                    aux->sig->pal[0] = NULL;
+                    aux->sig->cantpl--;
+                    aux->cantpl++;
+                }
+                cout << "2" << endl;
+                for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); tope > 0; tope--)
+                { //Comprimo las lineas
+                    if (aux->pal[tope] != NULL)
+                    {
+                        if (aux->pal[tope - 1] == NULL)
+                        {
+                            aux->pal[tope - 1] = aux->pal[tope];
+                            aux->pal[tope] = NULL;
+                        }
+                    }
+                }
+                cout << "3" << endl;
+                if (aux->sig->cantpl > 0)
+                { //Si tiene palabras
+                    for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); tope > 0; tope--)
+                    { //Comprimo las lineas
+                        if (aux->sig->pal[tope] != NULL)
+                        {
+                            if (aux->sig->pal[tope - 1] == NULL)
+                            {
+                                aux->sig->pal[tope - 1] = aux->sig->pal[tope];
+                                aux->sig->pal[tope] = NULL;
+                            }
+                        }
+                    }
+                    aux = l; //vuelvo al primer nodo
+                    cout << "4" << endl;
+                }
+                else
+                {
+                    if (aux->sig != NULL)
+                        cout << "5" << endl;
+                    aux = aux->sig;
+                }
+            }
+            else
+            {
+                if (cantl > 2)
+                {      cout << "55" << endl;
+                    if (aux->indice == 1)
+                    {
+                        aux = aux->sig;
+                        delete[] aux->ant;
+                        aux->ant == NULL;
+                        l = aux;
+                        cantl--;
+                        while (aux->sig != NULL)
+                        {
+                            aux = aux->sig;
+                            aux->indice -= resta;
+                        }
+                    }
+                    else
+                    {
+                        cout << "6" << endl;
+                        aux = aux->ant;
+                        cout << "aux->ant" << aux->ant << endl;
+                        cout << "aux->sig" << aux->sig << endl;
+                        cout << "aux2" << aux2 << endl;
+                        cout << "estoyaca" << endl;
+
+                        aux2 = aux2->sig->sig;
+
+                        delete[] aux->sig;
+                        cantl--;
+                        aux->sig = aux2;
+                        aux2->ant = aux;
+                        while (aux->sig != NULL)
+                        {
+                            aux = aux->sig;
+                            aux->indice -= resta;
+                        }
+                    }
+                }
+                else{
+                    cout << "nuevocaso" << endl;
+                return OK;
+                }
+            }
+            cout << "7" << endl;
+        } while (aux->sig != NULL);
+        cout << "8" << endl;
+
+        if(cantl>=2){
+        for (int i = 0; i < cantl; i++)
+        { //Recorro todas las lineas
+
+            if (aux->cantpl == 0)
+            { // Si no tengo palabras borro el arreglo y la linea
+                delete[] aux->pal;
+                aux = aux->ant;
+                aux2 = aux->sig->sig;
+                delete[] aux->sig;
+                cantl--;
+                aux->sig = aux2;
+                aux2->ant = aux;
+                cout << "9" << endl;
+                while (aux->sig != NULL)
+                {
+                    cout << "10" << endl;
+                    aux = aux->sig;
+                    aux->indice -= resta;
+                }
+            }
+            else
+                aux = aux->sig;
+            cout << "11" << endl;
+        }
+        }
+        return OK;
+    }
+    return OK;
+}
 
 //8)Inserta una palabra en una li­nea.
 TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar)
@@ -532,6 +740,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
 
                             if (aux->pal[posicionPalabra] != NULL)
                             { //si en la posicion que yo quiero ingresar ya hay una palabra
+                                cout<<"aca"<<endl;
                                 for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); static_cast<unsigned int>(tope) > posicionPalabra; tope--)
                                 {
                                     if (aux->pal[tope] == NULL)
@@ -543,6 +752,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                                         }
                                     }
                                 }
+                                cout<<"aca2"<<endl;
                                 aux->pal[posicionPalabra] = new char[tam];
                                 strcpy(aux->pal[posicionPalabra], palabraAIngresar);
                                 aux->cantpl++;
@@ -578,11 +788,11 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                             {
                                 for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); tope > 0; tope--)
                                 {
-                                    if (aux->ant->pal[tope] == NULL)
+                                    if (aux->pal[tope] == NULL)
                                     {
                                         if (aux->pal[tope - 1] != NULL)
                                         {
-                                            aux->pal[tope] = aux->ant->pal[tope - 1];
+                                            aux->pal[tope] = aux->pal[tope - 1];
                                             aux-> pal[tope-1] = NULL;
                                         }
                                     }
@@ -677,7 +887,7 @@ TipoRetorno BorrarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posicion
 }
 
 //10)Borrar todas la ocurrencias de una palabra si existe en la linea
-TipoRetorno BorrarOcurrenciasEnLinea(linea &l, Posicion posicionLinea, Cadena(palabraABorrar))
+TipoRetorno BorrarOcurrenciasEnLinea(linea &l, Posicion posicionLinea, Cadena palabraABorrar)
 {
     linea aux = l;
     int restapl=1;
@@ -720,6 +930,7 @@ TipoRetorno BorrarOcurrenciasEnLinea(linea &l, Posicion posicionLinea, Cadena(pa
                 }
                 pasadas--;
             }
+            return OK;
         }
         return OK;
     }
@@ -741,6 +952,9 @@ TipoRetorno ImprimirLineaEnL(linea &l, Posicion posicionLinea)
             {
                 if (aux->pal[i] != NULL)
                 {
+                    if(i==aux->cantpl - 1){
+                       cout << aux->pal[i];  
+                    }else
                     cout << aux->pal[i] << ", ";
                 }
             }
