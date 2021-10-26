@@ -1,5 +1,6 @@
 #ifndef DICCIONARIO_H
 #define DICCIONARIO_H
+
 #include "definiciones.h"
 
 typedef struct nodo_abb * dicc;

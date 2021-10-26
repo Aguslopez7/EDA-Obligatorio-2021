@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//La estructura del diccionario
+//Estructura del diccionario
 struct nodo_abb{
 	int dato;
 	dicc iz;
