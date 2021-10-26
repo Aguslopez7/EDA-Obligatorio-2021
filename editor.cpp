@@ -14,7 +14,7 @@ using namespace std;
 
 struct nodo_editor{
     texto t;
-    //diccionario d;
+    //dicc d;
 };
 
 /*--------------------- Funciones --------------------*/
@@ -70,7 +70,6 @@ TipoRetorno ComprimirTexto(editor & e){
 
 // 8) Inserta una palabra en una línea.
 TipoRetorno InsertarPalabra(editor & e, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar){ 
-	//return NO_IMPLEMENTADA;
 	return InsertarPalabraEnT(e->t,(posicionLinea), (posicionPalabra), (palabraAIngresar));
 }
 
@@ -113,7 +112,6 @@ TipoRetorno ImprimirTextoIncorrecto(editor & e){
 
 // 16) Imprime las últimas MAX_CANT_ULTIMAS_PALABRAS palabras ingresadas al texto.
 TipoRetorno ImprimirUltimasPalabras(editor & e){
-
 	return NO_IMPLEMENTADA;
 }
 

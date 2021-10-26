@@ -10,15 +10,6 @@
 #include <iostream>
 #include <unistd.h>
 
-// Colors Codes
-#define COLOR_G "\033[32m"
-#define COLOR_Y "\033[33m" 
-#define COLOR_SB "\033[36m"
-#define COLOR_BW "\033[1;37m"
-#define COLOR_R "\033[0;31m"
-#define COLOR_P "\033[0;35m"
-#define COLOR_RESET "\033[0m"
-
 using namespace std;
 
 // Imprime todos los comandos disponibles.
@@ -173,7 +164,8 @@ int main(){
 		}else if (strcasecmp (pch, "comandos") == 0){
 			comandos();
 		}else if (strcasecmp (pch, "salir") == 0){
-			cout << COLOR_P <<"\n\t> Has salido del programa!\n\n" << COLOR_RESET;
+			cout <<"\n\n-----------------------------------------------------------------------------";
+			cout << COLOR_P <<"\n\n- Has salido del programa!\n\n" << COLOR_RESET;
 			salir = true;			
 		}else{
 			cout << COLOR_R <<  "\n> Comando Incorrecto.\n\n" << COLOR_RESET;
@@ -192,12 +184,12 @@ int main(){
 	
 	retorno = DestruirEditor(e);
 	if (retorno == OK)
-		cout << COLOR_G << " - Memoria liberada con exito.\n\n" << COLOR_RESET;
+		cout << COLOR_G << "- Memoria liberada con exito.\n\n" << COLOR_RESET;
 	else if (retorno == ERROR)
-		cout << COLOR_R << " - Error al liberar memoria.\n\n" << COLOR_RESET;
+		cout << COLOR_R << "- Error al liberar memoria.\n\n" << COLOR_RESET;
 	else
-		cout << COLOR_Y << " - Operacion DestruirEditor NO IMPLEMENTADA\n\n" << COLOR_RESET;
-
+		cout << COLOR_Y << "- Operacion DestruirEditor NO IMPLEMENTADA\n\n" << COLOR_RESET;
+	cout <<"-----------------------------------------------------------------------------\n" << endl;
 	delete [] comando;
 	//sleep(1.5);
 	//system("clear");
