@@ -4,8 +4,6 @@
 
 typedef struct nodo_abb * dicc;
 
-
-
 //12) Agrega una palabra al diccionario.
 TipoRetorno IngresarPalabraDiccionario(Cadena palabraAIngresar, dicc ab);
 

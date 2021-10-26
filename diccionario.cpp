@@ -10,23 +10,11 @@ struct nodo_abb{
 	dicc iz;
 	dicc de;
 };
-#include "diccionario.h"
-#include <stdio.h>
-#include <iostream>
-
-using namespace std;
-
-//La estructura del diccionario
-struct nodo_abb{
-	int dato;
-	dicc iz;
-	dicc de;
-};
 
 /*--------------------- Funciones --------------------*/
 
 //12) Agrega una palabra al diccionario.
-TipoRetorno IngresarPalabraDiccionario(Cadena palabraAIngresar, abb ab){
+/*TipoRetorno IngresarPalabraDiccionario(Cadena palabraAIngresar, dicc ab){
 // Inserta a la palabra en el arbol binario de busqueda.
 	if (ab == NULL){
 		ab = new(nodo_abb);
@@ -38,16 +26,16 @@ TipoRetorno IngresarPalabraDiccionario(Cadena palabraAIngresar, abb ab){
 	else
 		ab->de = insertar(x, ab->de);
 	return ab;
-}
+}*/
 
 //13) Borra una palabra del diccionario.
-TipoRetorno BorrarPalabraDiccionario(Cadena palabraABorrar);
+TipoRetorno BorrarPalabraDiccionario(Cadena palabraABorrar){}
 
 //14) Muestra las palabras del diccionario alfabéticamente.
-TipoRetorno ImprimirDiccionario();
+TipoRetorno ImprimirDiccionario(){}
 
 //15) Muestra las palabras del texto que no se encuentran en el diccionario.
-TipoRetorno ImprimirTextoIncorrecto();
+TipoRetorno ImprimirTextoIncorrecto(){}
 
 //16) Imprime las últimas palabras ingresadas.
-TipoRetorno ImprimirUltimasPalabras();
+TipoRetorno ImprimirUltimasPalabras(){}
