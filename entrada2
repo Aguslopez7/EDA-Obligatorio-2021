@@ -18,9 +18,9 @@ ImprimirLinea(3)
 ImprimirLinea(4)
 ImprimirLinea(5)
 ImprimirTexto()
-InsertarPalabra(2, 1, palabra3)
-ImprimirTexto()
 ComprimirTexto()
+ImprimirTexto()
+BorrarOcurrenciasPalabraEnLinea(1,palabra1)
 ImprimirTexto()
 salir
 

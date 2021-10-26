@@ -31,7 +31,7 @@ TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu)
         cantl += 1; // Cantidad de lineas igual a 1
         l->indice = cantl;
         lu = l;
-        /*-------------------- [DEBUG] --------------------*/
+        /*-------------------- [DEBUG] --------------------
         cout << "\n--------------------------------------" << endl;
         cout << "\nl->pal: " << l->pal << endl;
         cout << "\nl->ant: " << l->ant << endl;
@@ -42,7 +42,7 @@ TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu)
         cout << "\nINDICE LU: " << lu->indice << endl;
         cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
         cout << "\nPRIMER NODO CREADO" << endl;
-        cout << "\n--------------------------------------" << endl;
+        cout << "\n--------------------------------------" << endl;*/
     }
     else
     { // Insertar resto de los nodos
@@ -53,13 +53,12 @@ TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu)
         lu->pal = NULL;
         cantl++;
         lu->indice = cantl; // Cantidad de lineas >= 2
-        /*chanchada 2.0*/
         l = lu;
         while (l->ant != NULL)
         {
             l=l->ant;
         }
-        /*-------------------- [DEBUG] --------------------*/
+        /*-------------------- [DEBUG] --------------------
         cout << "\n--------------------------------------" << endl;
         cout << "\nlu->pal: " << lu->pal << endl;
         cout << "\nlu->ant: " << lu->ant << endl;
@@ -70,7 +69,7 @@ TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu)
         cout << "\nINDICE LU: " << lu->indice << endl;
         cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
         cout << "\nSIGUIENTE NODO CREADO" << endl;
-        cout << "\n--------------------------------------" << endl;
+        cout << "\n--------------------------------------" << endl;*/
     }
     return OK;
 }
@@ -84,12 +83,11 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
         linea aux2 = new (nodo_linea);
         linea aux = l;
         linea aux3 = l;
-        
-        /*-------------------- [DEBUG] --------------------*/
+        /*-------------------- [DEBUG] --------------------
         cout << "\nINDICE DE L: " << l->indice << endl;
         cout << "\nINDICE DE AUX: " << aux->indice << endl;
         cout << "\nPOSICION LINEA: " << posicionLinea << endl;
-        cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
+        cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;*/
         while (static_cast<unsigned int>(aux->indice) != posicionLinea)
             aux = aux->sig;
         aux3 = aux->ant;
@@ -104,9 +102,8 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             aux2 = aux2->sig;
             posicionLinea++;
             aux2->indice = posicionLinea;
-            cout << "\nindice: " << aux2->indice << endl;
         }
-        cout << "\nNUEVA CANTIDAD DE LINEAS: " << cantl << endl;
+        //cout << "\nNUEVA CANTIDAD DE LINEAS: " << cantl << endl;
         return OK;
     }
     //inertar en el primero
@@ -115,7 +112,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
         //un solo nodo
         if (cantl == 1)
         {
-            /*-------------------- [DEBUG] --------------------*/
+            /*-------------------- [DEBUG] --------------------
             cout << "\nlu->pal: " << lu->pal << endl;
             cout << "\nlu->ant: " << lu->ant << endl;
             cout << "\nlu->sig: " << lu->sig << endl;
@@ -123,7 +120,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             cout << "\nNODO LU: " << lu << endl;
             cout << "\nINDICE L: " << l->indice << endl;
             cout << "\nINDICE LU: " << lu->indice << endl;
-            cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
+            cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;*/
             l->ant = new (nodo_linea);
             l->ant->sig = l;
             l = l->ant;
@@ -132,7 +129,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             posicionLinea++;
             lu->indice = posicionLinea;
             cantl++;
-            /*-------------------- [DEBUG] --------------------*/
+            /*-------------------- [DEBUG] --------------------
             cout << "\n--------------------------------------" << endl;
             cout << "\nlu->pal: " << lu->pal << endl;
             cout << "\nlu->ant: " << lu->ant << endl;
@@ -143,7 +140,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             cout << "\nINDICE LU: " << lu->indice << endl;
             cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
             cout << "\nSIGUIENTE NODO CREADO" << endl;
-            cout << "\n--------------------------------------" << endl;
+            cout << "\n--------------------------------------" << endl;*/
         }
         else if(cantl==0){
             l=new(nodo_linea);
@@ -153,7 +150,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             l->indice=posicionLinea;
             lu=l;
             cantl++;
-           /*-------------------- [DEBUG] --------------------*/
+           /*-------------------- [DEBUG] --------------------
         cout << "\n--------------------------------------" << endl;
         cout << "\nl->pal: " << l->pal << endl;
         cout << "\nl->ant: " << l->ant << endl;
@@ -164,7 +161,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
         cout << "\nINDICE LU: " << lu->indice << endl;
         cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
         cout << "\nPRIMER NODO CREADO" << endl;
-        cout << "\n--------------------------------------" << endl;
+        cout << "\n--------------------------------------" << endl;*/
         }
         //varios nodos insertando en el primero
         else
@@ -179,7 +176,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             posicionLinea++;
             lu->indice = posicionLinea;
             cantl++;
-            /*-------------------- [DEBUG] --------------------*/
+            /*-------------------- [DEBUG] --------------------
             cout << "\n--------------------------------------" << endl;
             cout << "\nlu->pal: " << lu->pal << endl;
             cout << "\nlu->ant: " << lu->ant << endl;
@@ -190,7 +187,7 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             cout << "\nINDICE LU: " << lu->indice << endl;
             cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
             cout << "\nSIGUIENTE NODO CREADO" << endl;
-            cout << "\n--------------------------------------" << endl;
+            cout << "\n--------------------------------------" << endl;*/
 
         }
         return OK;
@@ -209,7 +206,7 @@ TipoRetorno BorrarPosLineaIndicadaEnLinea(linea &l, Posicion posicionLinea)
         linea aux2 = l;
         linea aux3 = l;
         if (posicionLinea == static_cast<unsigned int>(cantl))
-        {                                        //si estoy en el ultimo nodo
+        {//si estoy en el ultimo nodo
             while (static_cast<unsigned int>(aux->indice) != posicionLinea) //No llegue a la linea que tengo que borrar
                 aux = aux->sig;
             if (aux->pal != NULL)
@@ -378,13 +375,13 @@ TipoRetorno BorrarLineas(linea &l, linea &lu){
     cantl = 0;
     l = NULL;
     lu = NULL;
-    /*-------------------- [DEBUG] --------------------*/
+    /*-------------------- [DEBUG] --------------------
     cout << "\n--------------------------------------" << endl;
     cout << "\nNODO L: " << l << endl;
     cout << "\nNODO LU: " << lu << endl;
     cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
     cout << "\nLINEAS ELIMINADAS" << endl;
-    cout << "\n--------------------------------------" << endl;
+    cout << "\n--------------------------------------" << endl;*/
     return OK;
 }
 
@@ -395,7 +392,7 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL(linea &l, Cadena palabraABorrar)
     int restapl=1;
     int n = aux->cantpl;
     if (cantl == 1)
-    {                         //Un nodo solo
+    {//Un nodo solo
         if (aux->pal != NULL) 
         { //Hay almenos una palabra           
             for (int i = 0; i < n; i++)
@@ -403,14 +400,15 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL(linea &l, Cadena palabraABorrar)
                 if (aux->pal[i] != NULL)
                 {
                     if (strcmp(palabraABorrar, aux->pal[i]) == 0)
-                    {                         //Comparo la palabra a borrar con las que tengo
+                    {//Comparo la palabra a borrar con las que tengo
+                        /*-------------------- [DEBUG] --------------------
                         cout << "\n--------------------------------------" << endl;
                         cout << "\nPALABRA BORRADA: " << aux->pal[i] << endl;
-                        cout << "\n--------------------------------------" << endl;
+                        cout << "\n--------------------------------------" << endl;*/
                         delete[] aux->pal[i]; //Borro la palabra
                         aux->pal[i] = NULL;   //Lo apunto a NULL
                         aux->cantpl-=restapl;
-                        cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
+                        //cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
                     }
                 }
             }
@@ -442,14 +440,15 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL(linea &l, Cadena palabraABorrar)
                     if (aux->pal[i] != NULL)
                     {
                         if (strcmp(palabraABorrar, aux->pal[i]) == 0)
-                        {                         //Comparo la palabra a borrar con las que tengo
+                        {//Comparo la palabra a borrar con las que tengo
+                            /*-------------------- [DEBUG] --------------------
                             cout << "\n--------------------------------------" << endl;
                             cout << "\nPALABRA BORRADA MAS NODOS: " << aux->pal[i] << endl;
-                            cout << "\n--------------------------------------" << endl;
+                            cout << "\n--------------------------------------" << endl;*/
                             delete[] aux->pal[i]; //Borro la palabra
                             aux->pal[i] = NULL;     //Lo apunto a NULL
                             aux->cantpl-=restapl; 
-                            cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
+                            //cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
                         }
                     }
                 }
@@ -482,14 +481,15 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL(linea &l, Cadena palabraABorrar)
                     if (aux->pal[i] != NULL)
                     {
                         if (strcmp(palabraABorrar, aux->pal[i]) == 0)
-                        {                         //Comparo la palabra a borrar con las que tengo
+                        {//Comparo la palabra a borrar con las que tengo
+                            /*-------------------- [DEBUG] --------------------
                             cout << "\n--------------------------------------" << endl;
                             cout << "\nPALABRA BORRADA MAS NODOS: " << aux->pal[i] << endl;
-                            cout << "\n--------------------------------------" << endl;
+                            cout << "\n--------------------------------------" << endl;*/
                             delete[] aux->pal[i]; //Borro la palabra
                             aux->pal[i] = NULL;     //Lo apunto a NULL
                             aux->cantpl-=restapl; 
-                            cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
+                            //cout << "\nCANTIDAD DE PALABRAS PL: " << aux->cantpl << endl;
                         }
                     }
                 }
@@ -519,7 +519,6 @@ TipoRetorno BorrarOcurrenciasPalabraEnTextoEnL(linea &l, Cadena palabraABorrar)
 TipoRetorno ImprimirTextoEnL(linea &l)
 {
     linea aux = l;
-
     if (cantl == 0)
     {
         cout << "Texto Vacio" << endl;
@@ -554,21 +553,17 @@ TipoRetorno ImprimirTextoEnL(linea &l)
 //7) Comprime las palabras del texto.
 TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
 {
-
     linea aux = l; 
     linea aux2 = l;
     int resta = 1;
-
     if (cantl >= 2)
     {
         do
         {
-            
             if (aux->pal != NULL)
             {
                 while (aux->pal[MAX_CANT_PALABRAS_X_LINEA - 1] != NULL) //Si esta llena la linea sigo hasta que haya una con lugar
                     aux = aux->sig;                                     //Paso a la siguiente
-
                 if (aux->sig->cantpl > 0)
                 { //Si la sig tiene palabras
                     aux->pal[MAX_CANT_PALABRAS_X_LINEA - 1] = aux->sig->pal[0];
@@ -666,8 +661,9 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
                         aux->indice -= resta;
                     }
                 }
-                else
+                else{
                     aux = aux->sig;
+                }
             }
         }else if (cantl==2){
             aux=l;
@@ -718,7 +714,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                         aux->pal[posicionPalabra] = new char[tam];
                         strcpy(aux->pal[posicionPalabra], palabraAIngresar);
                         aux->cantpl++;
-                        /*-------------------- [DEBUG] --------------------*/
+                        /*-------------------- [DEBUG] --------------------
                         cout << "\n--------------------------------------" << endl;
                         cout << "\nNUEVA CADENA CREADA [] = " << MAX_CANT_PALABRAS_X_LINEA <<endl;
                         cout << "\nPOSICION LINEA INGRESADA: " << posicionLinea << endl;
@@ -726,7 +722,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                         cout << "\nPALABRA A INGRESAR: " << palabraAIngresar << endl;
                         cout << "\nPALABRA INGRSADA: " << aux->pal[posicionPalabra] << endl;
                         cout << "\nCANTIDAD DE PALABRAS: " << aux->cantpl << endl;
-                        cout << "\n--------------------------------------" << endl;
+                        cout << "\n--------------------------------------" << endl;*/
                         x = false;
                     }
                 }
@@ -754,14 +750,14 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                                 aux->pal[posicionPalabra] = new char[tam];
                                 strcpy(aux->pal[posicionPalabra], palabraAIngresar);
                                 aux->cantpl++;
-                                /*-------------------- [DEBUG] --------------------*/
+                                /*-------------------- [DEBUG] --------------------
                                 cout << "\n--------------------------------------" << endl;
                                 cout << "\nPOSICION LINEA INGRESADA: " << posicionLinea << endl;
                                 cout << "\nPOSICION PALABRA INGRESADA: " << "[" << posicionPalabra << "]" << endl;
                                 cout << "\nPALABRA A INGRESAR: " << palabraAIngresar << endl;
                                 cout << "\nPALABRA INGRSADA: " << aux->pal[posicionPalabra] << endl;
                                 cout << "\nCANTIDAD DE PALABRAS: " << aux->cantpl << endl;
-                                cout << "\n--------------------------------------" << endl;
+                                cout << "\n--------------------------------------" << endl;*/
                                 return OK;
                             }
                             else
@@ -769,14 +765,14 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                                 aux->pal[posicionPalabra] = new char[tam];
                                 strcpy(aux->pal[posicionPalabra], palabraAIngresar);
                                 aux->cantpl++;
-                                /*-------------------- [DEBUG] --------------------*/
+                                /*-------------------- [DEBUG] --------------------
                                 cout << "\n--------------------------------------" << endl;
                                 cout << "\nPOSICION LINEA INGRESADA: " << posicionLinea << endl;
                                 cout << "\nPOSICION PALABRA INGRESADA: " << "[" << posicionPalabra << "]" << endl;
                                 cout << "\nPALABRA A INGRESAR: " << palabraAIngresar << endl;
                                 cout << "\nPALABRA INGRSADA: " << aux->pal[posicionPalabra] << endl;
                                 cout << "\nCANTIDAD DE PALABRAS: " << aux->cantpl << endl;
-                                cout << "\n--------------------------------------" << endl;
+                                cout << "\n--------------------------------------" << endl;*/
                                 return OK;
                             }
                         }
@@ -833,10 +829,8 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
             } while (x);
             return OK;
         }
-        cout << "\nPOS PALABRA INVALIDO" << endl;
         return ERROR;
     }
-    cout << "\nPOS LINEA INVALIDO" << endl;
     return ERROR;
 }
 
@@ -888,7 +882,6 @@ TipoRetorno BorrarOcurrenciasEnLinea(linea &l, Posicion posicionLinea, Cadena pa
 {
     linea aux = l;
     int restapl=1;
-    
     if ((posicionLinea >= 1) && (posicionLinea <= static_cast<unsigned int>(cantl)))
     {
         while (posicionLinea != static_cast<unsigned int>(aux->indice)) //Si mi posicion de la linea no es la que quiero
@@ -900,15 +893,16 @@ TipoRetorno BorrarOcurrenciasEnLinea(linea &l, Posicion posicionLinea, Cadena pa
             {
                 if (aux->pal[i] != NULL)
                 {
+                    /*-------------------- [DEBUG] --------------------
                     cout << "\nPALABRA EN STRING: " << aux->pal[i] << endl;
                     cout << "\nPALABRA : " << palabraABorrar << endl;
-                    cout << "\nstrcmp : " << strcmp(aux->pal[i],palabraABorrar ) << endl;
+                    cout << "\nstrcmp : " << strcmp(aux->pal[i],palabraABorrar ) << endl;*/
                     if (strcmp(palabraABorrar, aux->pal[i]) == 0)
                         {                         //Comparo la palabra a borrar con las que tengo
-                            /*-------------------- [DEBUG] --------------------*/
+                            /*-------------------- [DEBUG] --------------------
                             cout << "\n--------------------------------------" << endl;
                             cout << "\nPALABRA BORRADA: " << aux->pal[i] << endl;
-                            cout << "\n--------------------------------------" << endl;
+                            cout << "\n--------------------------------------" << endl;*/
                             delete[] aux->pal[i]; //Borro la palabra
                             aux->pal[i] = NULL;   //Lo apunto a NULL
                             aux->cantpl-=restapl;
@@ -962,10 +956,10 @@ TipoRetorno ImprimirLineaEnL(linea &l, Posicion posicionLinea)
         }
         else
             cout << "\n\t" << aux->indice << ": ";
-        /*-------------------- [DEBUG] --------------------*/
+        /*-------------------- [DEBUG] --------------------
         cout << "\n\n--------------------------------------" << endl;
         cout << "\nCANTIDAD DE PALABRAS: " << aux->cantpl << endl;
-        cout << "\n--------------------------------------" << endl;
+        cout << "\n--------------------------------------" << endl;*/
         return OK;
     }
     else
