@@ -991,8 +991,8 @@ TipoRetorno ImprimirLineaEnL(linea &l, Posicion posicionLinea)
     delete l;
     delete lu;
     -------------------- [DEBUG] --------------------
-    cout << "\nNODO L: " << l << endl;
     cout << "\nNODO LU: " << lu << endl;
+    cout << "\nNODO L: " << l << endl;
     cout << "\nINDICE L: " << l->indice << endl;
     cout << "\nINDICE LU: " << lu->indice << endl;
     cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
