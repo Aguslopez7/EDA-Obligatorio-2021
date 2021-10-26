@@ -555,14 +555,15 @@ TipoRetorno ImprimirTextoEnL(linea &l)
 TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
 {
 
-    linea aux = l, aux2 = l;
+    linea aux = l; 
+    linea aux2 = l;
     int resta = 1;
 
     if (cantl >= 2)
     {
         do
         {
-            cout << "1" << endl;
+            
             if (aux->pal != NULL)
             {
                 while (aux->pal[MAX_CANT_PALABRAS_X_LINEA - 1] != NULL) //Si esta llena la linea sigo hasta que haya una con lugar
@@ -575,19 +576,19 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
                     aux->sig->cantpl--;
                     aux->cantpl++;
                 }
-                cout << "2" << endl;
-                for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); tope > 0; tope--)
-                { //Comprimo las lineas
-                    if (aux->pal[tope] != NULL)
-                    {
-                        if (aux->pal[tope - 1] == NULL)
+                if (aux->cantpl < (MAX_CANT_PALABRAS_X_LINEA)){ // si el del medio del arreglo es vacio
+                    for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); tope > 0; tope--)
+                    { //Comprimo las lineas
+                        if (aux->pal[tope] != NULL)
                         {
-                            aux->pal[tope - 1] = aux->pal[tope];
-                            aux->pal[tope] = NULL;
+                            if (aux->pal[tope - 1] == NULL)
+                            {
+                                aux->pal[tope - 1] = aux->pal[tope];
+                                aux->pal[tope] = NULL;
+                            }
                         }
                     }
                 }
-                cout << "3" << endl;
                 if (aux->sig->cantpl > 0)
                 { //Si tiene palabras
                     for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); tope > 0; tope--)
@@ -602,19 +603,17 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
                         }
                     }
                     aux = l; //vuelvo al primer nodo
-                    cout << "4" << endl;
                 }
                 else
                 {
                     if (aux->sig != NULL)
-                        cout << "5" << endl;
-                    aux = aux->sig;
+                        aux = aux->sig;
                 }
             }
             else
             {
                 if (cantl > 2)
-                {      cout << "55" << endl;
+                {      
                     if (aux->indice == 1)
                     {
                         aux = aux->sig;
@@ -630,15 +629,8 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
                     }
                     else
                     {
-                        cout << "6" << endl;
                         aux = aux->ant;
-                        cout << "aux->ant" << aux->ant << endl;
-                        cout << "aux->sig" << aux->sig << endl;
-                        cout << "aux2" << aux2 << endl;
-                        cout << "estoyaca" << endl;
-
                         aux2 = aux2->sig->sig;
-
                         delete[] aux->sig;
                         cantl--;
                         aux->sig = aux2;
@@ -651,39 +643,47 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
                     }
                 }
                 else{
-                    cout << "nuevocaso" << endl;
-                return OK;
+                    return OK;
                 }
             }
-            cout << "7" << endl;
         } while (aux->sig != NULL);
-        cout << "8" << endl;
-
-        if(cantl>=2){
-        for (int i = 0; i < cantl; i++)
-        { //Recorro todas las lineas
-
-            if (aux->cantpl == 0)
-            { // Si no tengo palabras borro el arreglo y la linea
-                delete[] aux->pal;
-                aux = aux->ant;
-                aux2 = aux->sig->sig;
-                delete[] aux->sig;
-                cantl--;
-                aux->sig = aux2;
-                aux2->ant = aux;
-                cout << "9" << endl;
-                while (aux->sig != NULL)
-                {
-                    cout << "10" << endl;
-                    aux = aux->sig;
-                    aux->indice -= resta;
+        if(cantl>2){
+            aux=l;
+            for (int i = 0; i < cantl; i++)
+            { //Recorro todas las lineas
+                if (aux->cantpl == 0)
+                { // Si no tengo palabras borro el arreglo y la linea
+                    delete[] aux->pal;
+                    aux = aux->ant;
+                    aux2 = aux->sig->sig;
+                    delete aux->sig;
+                    cantl--;
+                    aux->sig = aux2;
+                    aux2->ant = aux;
+                    while (aux->sig != NULL)
+                    {
+                        aux = aux->sig;
+                        aux->indice -= resta;
+                    }
                 }
+                else
+                    aux = aux->sig;
             }
-            else
-                aux = aux->sig;
-            cout << "11" << endl;
-        }
+        }else if (cantl==2){
+            aux=l;
+            for (int i = 0; i < cantl; i++)
+            { //Recorro todas las lineas
+                if (aux->cantpl == 0)
+                { // Si no tengo palabras borro el arreglo y la linea
+                    delete[] aux->pal;
+                    aux = aux->ant;
+                    delete aux->sig;
+                    cantl--;
+                    aux->sig = NULL;
+                }
+                else
+                    aux = aux->sig;
+            }
         }
         return OK;
     }
@@ -740,7 +740,6 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
 
                             if (aux->pal[posicionPalabra] != NULL)
                             { //si en la posicion que yo quiero ingresar ya hay una palabra
-                                cout<<"aca"<<endl;
                                 for (int tope = (MAX_CANT_PALABRAS_X_LINEA - 1); static_cast<unsigned int>(tope) > posicionPalabra; tope--)
                                 {
                                     if (aux->pal[tope] == NULL)
@@ -752,7 +751,6 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                                         }
                                     }
                                 }
-                                cout<<"aca2"<<endl;
                                 aux->pal[posicionPalabra] = new char[tam];
                                 strcpy(aux->pal[posicionPalabra], palabraAIngresar);
                                 aux->cantpl++;
@@ -890,27 +888,31 @@ TipoRetorno BorrarOcurrenciasEnLinea(linea &l, Posicion posicionLinea, Cadena pa
 {
     linea aux = l;
     int restapl=1;
-    int n = aux->cantpl;
+    
     if ((posicionLinea >= 1) && (posicionLinea <= static_cast<unsigned int>(cantl)))
     {
         while (posicionLinea != static_cast<unsigned int>(aux->indice)) //Si mi posicion de la linea no es la que quiero
             aux = aux->sig;
         if (aux->pal != NULL)
         {
+            int n = aux->cantpl;
             for (int i = 0; i < n; i++)
             {
                 if (aux->pal[i] != NULL)
                 {
+                    cout << "\nPALABRA EN STRING: " << aux->pal[i] << endl;
+                    cout << "\nPALABRA : " << palabraABorrar << endl;
+                    cout << "\nstrcmp : " << strcmp(aux->pal[i],palabraABorrar ) << endl;
                     if (strcmp(palabraABorrar, aux->pal[i]) == 0)
-                    {                         //Comparo la palabra a borrar con las que tengo
-                        /*-------------------- [DEBUG] --------------------*/
-                        cout << "\n--------------------------------------" << endl;
-                        cout << "\nPALABRA BORRADA: " << aux->pal[i] << endl;
-                        cout << "\n--------------------------------------" << endl;
-                        delete[] aux->pal[i]; //Borro la palabra
-                        aux->pal[i] = NULL;   //Lo apunto a NULL
-                        aux->cantpl-=restapl;
-                    }
+                        {                         //Comparo la palabra a borrar con las que tengo
+                            /*-------------------- [DEBUG] --------------------*/
+                            cout << "\n--------------------------------------" << endl;
+                            cout << "\nPALABRA BORRADA: " << aux->pal[i] << endl;
+                            cout << "\n--------------------------------------" << endl;
+                            delete[] aux->pal[i]; //Borro la palabra
+                            aux->pal[i] = NULL;   //Lo apunto a NULL
+                            aux->cantpl-=restapl;
+                        }
                 }
             }
             int pasadas = aux->cantpl;
