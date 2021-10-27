@@ -14,7 +14,7 @@ using namespace std;
 
 struct nodo_editor{
     texto t;
-    //dicc d;
+    dicc d;
 };
 
 /*--------------------- Funciones --------------------*/
@@ -25,9 +25,9 @@ editor CrearEditor(){
     cout << "\t─────────────────────\n";
     editor e = new(nodo_editor);
     e->t = CrearTexto();
-    //e->d = CrearDicccionario;
+    e->d = CrearDiccionario();
     cout << "\te->t: " << e->t << endl;
-    //cout << "e->d: " << e->d << endl;
+    cout << "\te->d: " << e->d << endl;
     return e;
 }
 
@@ -91,7 +91,8 @@ TipoRetorno ImprimirLinea(editor & e, Posicion posicionLinea){
 // 12) Agrega una palabra al diccionario.
 // Esta operación debe realizarse en a lo sumo O(log n) promedio.
 TipoRetorno IngresarPalabraDiccionario(editor & e, Cadena palabraAIngresar){
-	return NO_IMPLEMENTADA;
+	return IngresarPalabraDiccionarioD(e->d,(palabraAIngresar));
+	//return NO_IMPLEMENTADA;
 }
 
 // 13) Borra una palabra del diccionario.

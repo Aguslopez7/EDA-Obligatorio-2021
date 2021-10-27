@@ -5,8 +5,10 @@
 
 typedef struct nodo_abb * dicc;
 
+dicc CrearDiccionario();
+
 //12) Agrega una palabra al diccionario.
-TipoRetorno IngresarPalabraDiccionario(Cadena palabraAIngresar, dicc ab);
+TipoRetorno IngresarPalabraDiccionarioD(dicc &d, Cadena palabraAIngresar);
 
 //13) Borra una palabra del diccionario.
 TipoRetorno BorrarPalabraDiccionario(Cadena palabraABorrar);
