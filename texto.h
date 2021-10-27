@@ -4,7 +4,7 @@
 #include "definiciones.h"
 
 typedef struct nodo_texto * texto;
-
+//
 /*--------------------- Funciones --------------------*/
 
 texto CrearTexto();

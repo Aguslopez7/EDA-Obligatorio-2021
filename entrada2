@@ -23,4 +23,3 @@ ImprimirTexto()
 BorrarOcurrenciasPalabraEnLinea(1,palabra1)
 ImprimirTexto()
 salir
-

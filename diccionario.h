@@ -4,7 +4,7 @@
 #include "definiciones.h"
 
 typedef struct nodo_abb * dicc;
-
+//
 dicc CrearDiccionario();
 
 //12) Agrega una palabra al diccionario.

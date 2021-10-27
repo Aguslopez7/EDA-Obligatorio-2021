@@ -1,6 +1,5 @@
 // Estructuras de Datos y Algoritmos - Obligatorio 2021
 // Tecnologo en Informatica FIng - DGETP - UTEC
-//
 // main.c
 // Programa Principal Obligatorio
 

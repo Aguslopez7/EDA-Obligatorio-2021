@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 using namespace std;
-
+//
 int cantl = 0;
 
 struct nodo_linea

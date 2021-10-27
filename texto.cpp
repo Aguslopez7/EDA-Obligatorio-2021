@@ -81,4 +81,4 @@ TipoRetorno ImprimirLineaEnT(texto &t, Posicion posicionLinea){
 
 /*TipoRetorno DestruirT(texto &t){
     return DestruirL(t->primeral,t->ultimal);
-}*/
+}*///
