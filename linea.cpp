@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 using namespace std;
-//
+
 int cantl = 0;
 
 struct nodo_linea
@@ -18,6 +18,10 @@ struct nodo_linea
 };
 
 /*--------------------- Funciones --------------------*/
+
+linea CrearLinea(){
+    return NULL;
+}
 
 //1)Inserta una nueva línea vacía al final del texto.
 TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu)
@@ -150,18 +154,18 @@ TipoRetorno InsertarLineaEnPosicionEnLinea(linea &l, linea &lu, Posicion posicio
             l->indice=posicionLinea;
             lu=l;
             cantl++;
-           /*-------------------- [DEBUG] --------------------
-        cout << "\n--------------------------------------" << endl;
-        cout << "\nl->pal: " << l->pal << endl;
-        cout << "\nl->ant: " << l->ant << endl;
-        cout << "\nl->sig: " << l->sig << endl;
-        cout << "\nNODO L: " << l << endl;
-        cout << "\nNODO LU: " << lu << endl;
-        cout << "\nINDICE L: " << l->indice << endl;
-        cout << "\nINDICE LU: " << lu->indice << endl;
-        cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
-        cout << "\nPRIMER NODO CREADO" << endl;
-        cout << "\n--------------------------------------" << endl;*/
+            /*-------------------- [DEBUG] --------------------
+            cout << "\n--------------------------------------" << endl;
+            cout << "\nl->pal: " << l->pal << endl;
+            cout << "\nl->ant: " << l->ant << endl;
+            cout << "\nl->sig: " << l->sig << endl;
+            cout << "\nNODO L: " << l << endl;
+            cout << "\nNODO LU: " << lu << endl;
+            cout << "\nINDICE L: " << l->indice << endl;
+            cout << "\nINDICE LU: " << lu->indice << endl;
+            cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
+            cout << "\nPRIMER NODO CREADO" << endl;
+            cout << "\n--------------------------------------" << endl;*/
         }
         //varios nodos insertando en el primero
         else
@@ -964,6 +968,43 @@ TipoRetorno ImprimirLineaEnL(linea &l, Posicion posicionLinea)
     }
     else
         return ERROR;
+}
+
+//15) Muestra las palabras del texto que no se encuentran en el diccionario.
+TipoRetorno ImprimirTextoIncorrectoL(linea &l, dicc &d)
+{
+    linea aux = l;
+    if (cantl == 0)
+    {
+        cout << "Texto Vacio" << endl;
+        return OK;
+    }
+    else
+    {
+        do
+        {
+            if (aux->pal != NULL)
+            {        
+                cout << "\n\t" << aux->indice << ": ";     
+                for (int i = 0; i < aux->cantpl; i++)
+                {
+                    if (aux->pal[i] != NULL)
+                    {
+                        if(!PertenecePalabraDicc(d, aux->pal[i])){
+                            if(i == aux->cantpl - 1)
+                                cout << aux->pal[i];  
+                            else
+                                cout << aux->pal[i] << ", ";
+                        }
+                    }
+                }
+            }
+            else
+                cout << "\n\t" << aux->indice << ": ";
+            aux = aux->sig;
+        } while (aux != NULL);
+        return OK;
+    }
 }
 
 /*TipoRetorno DestruirL(linea &l, linea &lu){

@@ -1,0 +1,12 @@
+ImprimirDiccionario();
+IngresarPalabraDiccionario(Hoja);
+IngresarPalabraDiccionario(Hojalata);
+IngresarPalabraDiccionario(Bosque);
+IngresarPalabraDiccionario(Bosque);
+IngresarPalabraDiccionario(Arbol);
+IngresarPalabraDiccionario(Casa);
+IngresarPalabraDiccionario(Pelo);
+ImprimirDiccionario();
+BorrarPalabraDiccionario(Bosque);
+ImprimirDiccionario();
+salir

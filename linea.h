@@ -2,9 +2,10 @@
 #define LINEA_H
 
 #include "definiciones.h"
+#include "diccionario.h"
 
 typedef struct nodo_linea * linea;
-//
+
 /*--------------------- Funciones --------------------*/
 
 linea CrearLinea();
@@ -43,5 +44,8 @@ TipoRetorno BorrarOcurrenciasEnLinea(linea & l, Posicion posicionLinea, Cadena p
 
 //11)Imprime la línea por pantalla.
 TipoRetorno ImprimirLineaEnL(linea & l, Posicion posicionLinea);
+
+//15) Muestra las palabras del texto que no se encuentran en el diccionario.
+TipoRetorno ImprimirTextoIncorrectoL(linea &l, dicc &d);
 
 #endif

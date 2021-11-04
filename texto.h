@@ -2,9 +2,10 @@
 #define TEXTO_H
 
 #include "definiciones.h"
+#include "diccionario.h"
 
 typedef struct nodo_texto * texto;
-//
+
 /*--------------------- Funciones --------------------*/
 
 texto CrearTexto();
@@ -41,6 +42,9 @@ TipoRetorno BorrarOcurrenciasPalabraEnLineaEnT(texto &t, Posicion posicionLinea,
 
 //11)Imprime la línea por pantalla.
 TipoRetorno ImprimirLineaEnT(texto &t, Posicion posicionLinea);
+
+//15) Muestra las palabras del texto que no se encuentran en el diccionario.
+TipoRetorno ImprimirTextoIncorrectoT(texto &t, dicc &d);
 
 //TipoRetorno DestruirT(texto &t);
 
