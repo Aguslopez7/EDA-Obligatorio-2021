@@ -129,12 +129,15 @@ TipoRetorno ImprimirTextoIncorrecto(editor &e)
 // 16) Imprime las últimas MAX_CANT_ULTIMAS_PALABRAS palabras ingresadas al texto.
 TipoRetorno ImprimirUltimasPalabras(editor &e)
 {
-	return NO_IMPLEMENTADA;
+	return ImprimirUltimasPalabrasT(e->t);
+
 }
 
 // Destruye la estructura editor y libera la memoria asociada.
 TipoRetorno DestruirEditor(editor &e)
 {
-	// return DestruirT(e->t);
-	return NO_IMPLEMENTADA;
+	DestruirT(e->t);
+	DestruirD(e->d);
+	delete e;
+	return OK;
 }

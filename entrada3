@@ -18,6 +18,4 @@ ImprimirTextoIncorrecto()
 BorrarPalabraDiccionario(palabra2)
 ImprimirDiccionario()
 ImprimirTextoIncorrecto()
-ImprimirUltimasPalabras()
-BorrarTodo()
 salir

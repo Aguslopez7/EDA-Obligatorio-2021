@@ -40,12 +40,18 @@ TipoRetorno BorrarPalabraEnT (texto &t, Posicion posicionLinea, Posicion posicio
 //10) Borra todas las ocurrencias de una palabra en la línea indicada.
 TipoRetorno BorrarOcurrenciasPalabraEnLineaEnT(texto &t, Posicion posicionLinea, Cadena palabraABorrar);
 
-//11)Imprime la línea por pantalla.
+// 11)Imprime la línea por pantalla.
 TipoRetorno ImprimirLineaEnT(texto &t, Posicion posicionLinea);
 
 //15) Muestra las palabras del texto que no se encuentran en el diccionario.
 TipoRetorno ImprimirTextoIncorrectoT(texto &t, dicc &d);
 
-//TipoRetorno DestruirT(texto &t);
+// 16) Imprime las últimas palabras ingresadas.
+TipoRetorno ImprimirUltimasPalabrasT(texto &t);
+
+// 16) Auxiliars
+void ImprimirUltimasPalabrasAux (texto &t, Cadena palabraAIngresar);
+
+void DestruirT(texto &t);
 
 #endif

@@ -3,14 +3,13 @@
 
 #include "definiciones.h"
 #include "diccionario.h"
+#include "texto.h"
 
 typedef struct nodo_linea * linea;
 
 /*--------------------- Funciones --------------------*/
 
 linea CrearLinea();
-
-TipoRetorno DestruirL(linea &l, linea &lu);
 
 //1)Insertar linea al final
 TipoRetorno InsertarLineaEnLinea(linea &l, linea &lu);
@@ -33,8 +32,8 @@ TipoRetorno ImprimirTextoEnL(linea & l);
 //7) Comprime las palabras del texto.
 TipoRetorno ComprimirTextoEnL(linea &l, linea &lu);
 
-//(8Inserta una palabra en una línea.
-TipoRetorno InsertarPalabraEnL(linea & l, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar);
+//8)Inserta una palabra en una línea.
+TipoRetorno InsertarPalabraEnL(linea & l, texto &t, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar);
 
 //9)Borra la palabra en la posicion indicada
 TipoRetorno BorrarPalabraEnL (linea &l, Posicion posicionLinea, Posicion posicionPalabra);
@@ -47,5 +46,8 @@ TipoRetorno ImprimirLineaEnL(linea & l, Posicion posicionLinea);
 
 //15) Muestra las palabras del texto que no se encuentran en el diccionario.
 TipoRetorno ImprimirTextoIncorrectoL(linea &l, dicc &d);
+
+//Destruir todo
+void DestruirL(linea &l, linea &lu);
 
 #endif

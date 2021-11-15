@@ -691,7 +691,7 @@ TipoRetorno ComprimirTextoEnL(linea &l, linea &lu)
 }
 
 //8)Inserta una palabra en una li­nea.
-TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar)
+TipoRetorno InsertarPalabraEnL(linea &l, texto &t, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar)
 {
     linea aux = l;
     int tam = strlen(palabraAIngresar);
@@ -762,6 +762,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                                 cout << "\nPALABRA INGRSADA: " << aux->pal[posicionPalabra] << endl;
                                 cout << "\nCANTIDAD DE PALABRAS: " << aux->cantpl << endl;
                                 cout << "\n--------------------------------------" << endl;*/
+                                ImprimirUltimasPalabrasAux(t, palabraAIngresar);
                                 return OK;
                             }
                             else
@@ -777,6 +778,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                                 cout << "\nPALABRA INGRSADA: " << aux->pal[posicionPalabra] << endl;
                                 cout << "\nCANTIDAD DE PALABRAS: " << aux->cantpl << endl;
                                 cout << "\n--------------------------------------" << endl;*/
+                                ImprimirUltimasPalabrasAux(t, palabraAIngresar);
                                 return OK;
                             }
                         }
@@ -831,6 +833,7 @@ TipoRetorno InsertarPalabraEnL(linea &l, Posicion posicionLinea, Posicion posici
                     }
                 }
             } while (x);
+            ImprimirUltimasPalabrasAux(t, palabraAIngresar);
             return OK;
         }
         return ERROR;
@@ -1007,7 +1010,7 @@ TipoRetorno ImprimirTextoIncorrectoL(linea &l, dicc &d)
     }
 }
 
-/*TipoRetorno DestruirL(linea &l, linea &lu){
+void DestruirL(linea &l, linea &lu){
     while (l != NULL){
         linea aux = l;
         if (l->pal != NULL){
@@ -1029,14 +1032,4 @@ TipoRetorno ImprimirTextoIncorrectoL(linea &l, dicc &d)
     cantl = 0;
     l = NULL;
     lu = NULL;
-    delete l;
-    delete lu;
-    -------------------- [DEBUG] --------------------
-    cout << "\nNODO LU: " << lu << endl;
-    cout << "\nNODO L: " << l << endl;
-    cout << "\nINDICE L: " << l->indice << endl;
-    cout << "\nINDICE LU: " << lu->indice << endl;
-    cout << "\nCANTIDAD DE LINEAS: " << cantl << endl;
-    cout << "\nLINEAS ELIMINADAS" << endl;
-    return OK;
-}*/
+}

@@ -1,12 +1,10 @@
-ImprimirDiccionario();
-IngresarPalabraDiccionario(Hoja);
-IngresarPalabraDiccionario(Hojalata);
-IngresarPalabraDiccionario(Bosque);
-IngresarPalabraDiccionario(Bosque);
-IngresarPalabraDiccionario(Arbol);
-IngresarPalabraDiccionario(Casa);
-IngresarPalabraDiccionario(Pelo);
-ImprimirDiccionario();
-BorrarPalabraDiccionario(Bosque);
-ImprimirDiccionario();
+InsertarLinea();
+InsertarLinea();
+ImprimirUltimasPalabras();
+InsertarPalabra(2, 1, "Palabra21");
+InsertarPalabra(2, 2, "Palabra22");
+InsertarPalabra(2, 3, "Palabra27");
+IngresarPalabraDiccionario("Hoja");
+ImprimirTexto();
+ImprimirUltimasPalabras();
 salir

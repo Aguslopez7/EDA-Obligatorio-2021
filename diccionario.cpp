@@ -179,12 +179,6 @@ void ImprimirDiccionarioDAux(dicc d)
 	}
 }
 
-// 16) Imprime las últimas palabras ingresadas.
-TipoRetorno ImprimirUltimasPalabras()
-{
-	return NO_IMPLEMENTADA;
-}
-
 bool PertenecePalabraDicc(dicc d, Cadena pal)
 {
 	if (d == NULL)
@@ -197,4 +191,14 @@ bool PertenecePalabraDicc(dicc d, Cadena pal)
 		PertenecePalabraDicc(d->de, pal);
 	else
 		PertenecePalabraDicc(d->iz, pal);
+}
+
+//destruyo todo
+void DestruirD(dicc &d)
+{
+	if (d!= NULL){
+        DestruirD(d->iz);
+        DestruirD(d->de);
+        delete d;
+    }
 }

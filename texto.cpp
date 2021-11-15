@@ -1,5 +1,6 @@
 #include "texto.h"
 #include "linea.h"
+#include <string.h>
 #include <stdio.h>
 #include <iostream>
 
@@ -9,6 +10,7 @@ struct nodo_texto
 {
     linea primeral;
     linea ultimal;
+    Cadena *ultpal;
 };
 
 /*--------------------- Funciones --------------------*/
@@ -19,6 +21,7 @@ texto CrearTexto()
     texto t = new (nodo_texto);
     t->primeral = CrearLinea();
     t->ultimal = t->primeral;
+    t->ultpal = NULL;
     cout << "\n\tt->primeral: " << t->primeral << endl;
     cout << "\tt->ultimal: " << t->ultimal << endl;
     cout << "\tt: " << t << endl;
@@ -70,7 +73,7 @@ TipoRetorno ComprimirTextoEnT(texto &t)
 // 8)
 TipoRetorno InsertarPalabraEnT(texto &t, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraAIngresar)
 {
-    return InsertarPalabraEnL(t->primeral, (posicionLinea), (posicionPalabra), (palabraAIngresar));
+    return InsertarPalabraEnL(t->primeral, t,  (posicionLinea), (posicionPalabra), (palabraAIngresar));
 }
 
 // 9)
@@ -97,6 +100,69 @@ TipoRetorno ImprimirTextoIncorrectoT(texto &t, dicc &d)
     return ImprimirTextoIncorrectoL(t->primeral, d);
 }
 
-/*TipoRetorno DestruirT(texto &t){
-    return DestruirL(t->primeral,t->ultimal);
-}*/
+// 16) Imprime las últimas palabras ingresadas.
+TipoRetorno ImprimirUltimasPalabrasT(texto &t)
+{
+    if (t->ultpal == NULL)
+        cout<<"\n\tNo se ingresaron palabras"<< endl;
+	else
+       for (int i=0; i< MAX_CANT_ULTIMAS_PALABRAS; i++){
+        cout<<"\n\t"<< t->ultpal[i];
+    }
+    return OK;
+}
+
+void ImprimirUltimasPalabrasAux (texto &t, Cadena palabraAIngresar)
+{
+    int tam = strlen(palabraAIngresar);
+    if (t->ultpal == NULL)
+    { //todavia no ingrese ninguna palabra
+        t->ultpal = new (Cadena[MAX_CANT_ULTIMAS_PALABRAS]); //me creo el arreglo
+        for (int i = 0; i < (MAX_CANT_ULTIMAS_PALABRAS - 1); i++)
+        {
+            t->ultpal[i] = NULL;
+        }
+        t->ultpal[0] = new char[tam];
+        strcpy(t->ultpal[0], palabraAIngresar);
+    }
+    else
+    {
+        for (int tope = (MAX_CANT_ULTIMAS_PALABRAS - 1); tope > 0; tope--)
+        {
+            if (t->ultpal[tope] == NULL)
+            {
+                if (t->ultpal[tope - 1] != NULL)
+                {
+                    t->ultpal[tope] = t->ultpal[tope - 1];
+                    t->ultpal[tope - 1] = NULL;
+                }
+            }
+            else
+            {
+                delete[] t->ultpal[tope];
+                t->ultpal[tope] = NULL;
+                if (t->ultpal[tope - 1] != NULL)
+                {
+                    t->ultpal[tope] = t->ultpal[tope - 1];
+                    t->ultpal[tope - 1] = NULL;
+                }
+            }
+        }
+        t->ultpal[0] = new char[tam];
+        strcpy(t->ultpal[0], palabraAIngresar);
+    }
+}
+
+void DestruirT(texto &t)
+{
+    DestruirL(t->primeral, t->ultimal);
+    if(t->ultpal != NULL){
+        for (int i = 0; i < MAX_CANT_ULTIMAS_PALABRAS ; i++)                //borro ultimas palabras
+        {    
+            delete[] t->ultpal[i]; //Borro la palabra
+            t->ultpal[i] = NULL;   //Lo apunto a NULL             
+        }
+        t->ultpal = NULL;
+    }
+    delete t;
+}

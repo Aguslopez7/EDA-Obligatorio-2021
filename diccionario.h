@@ -30,7 +30,7 @@ void ImprimirDiccionarioDAux(dicc d);
 // 15) Funcion auxiliar
 bool PertenecePalabraDicc(dicc d, Cadena pal);
 
-// 16) Imprime las últimas palabras ingresadas.
-TipoRetorno ImprimirUltimasPalabras();
+//destruir todo
+void DestruirD(dicc &d);
 
 #endif
