@@ -1,15 +1,10 @@
-# Simulador de Texto  [C++] 📝
-### Tecnólogo en Informática
+# Simulador de Texto [C++] 📝
+
 [![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
 
+## Tecnólogo en Informática
 
-
-## Detalles
-
-> ### Tarea Obligatoria de Estructura de Datos y Algoritmos - Segundo Semestre.
-
-- **Objetivo:** Simulador de Texto 📝
-- **Lenguaje:** C++ 
+### Tarea Obligatoria de Programación Avanzada - Segundo Semestre.
 
 #### Participantes: 
 
