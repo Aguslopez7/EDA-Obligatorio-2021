@@ -6,7 +6,7 @@
 
 ## Detalles
 
-### Tarea Obligatoria de Estructura de Datos y Algoritmos - Segundo Semestre.
+> ### Tarea Obligatoria de Estructura de Datos y Algoritmos - Segundo Semestre.
 
 - **Objetivo:** Simulador de Texto 📝
 - **Lenguaje:** C++ 
