@@ -1,5 +1,4 @@
-# Simulador de Texto  C++ 📝
-
+# Simulador de Texto  [C++] 📝
 ### Tecnólogo en Informática
 [![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
 
@@ -9,7 +8,10 @@
 
 ### Tarea Obligatoria de Estructura de Datos y Algoritmos - Segundo Semestre.
 
-#### Integrantes: 
+- **Objetivo:** Simulador de Texto 📝
+- **Lenguaje:** C++ 
+
+#### Participantes: 
 
 - Agustina Raimundez - 5.262.023-2 
 - Mateo Tambasco - 5.117.982-8 
