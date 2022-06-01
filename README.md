@@ -1,10 +1,12 @@
-# Simulador de Texto [C++] 📝
+# Simulador de Texto [C++] 🎮👾
 
-[![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
+> ### Tecnólogo en Informática - Facultad de Ingeniería UDELAR
+> ### Tarea Obligatoria de Programación Avanzada - Tercer Semestre.
 
-## Tecnólogo en Informática
+## Detalles
 
-### Tarea Obligatoria de Programación Avanzada - Segundo Semestre.
+- ### Programación Orientada a Objetos
+- ### Lenguaje C++
 
 #### Participantes: 
 
@@ -14,4 +16,8 @@
 
 #### Turno: 
 
-- Vespertino
+- Matutino
+
+---
+
+[![FING Logo](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)](https://www.fing.edu.uy/sites/default/files/inline-images/logofing.png)
